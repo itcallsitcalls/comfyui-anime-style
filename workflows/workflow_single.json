@@ -1,0 +1,28 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "example.png",
+      "upload": "image"
+    }
+  },
+  "2": {
+    "class_type": "AnimeStylePost",
+    "inputs": {
+      "image": ["1", 0],
+      "posterize_levels": 8,
+      "saturation": 1.25,
+      "contrast": 1.1,
+      "brightness": 0.0,
+      "lineart_strength": 0.5,
+      "glow": 0.0
+    }
+  },
+  "3": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": ["2", 0],
+      "filename_prefix": "AnimeStylePost"
+    }
+  }
+}

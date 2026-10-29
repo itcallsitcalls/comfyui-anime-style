@@ -1,0 +1,368 @@
+{
+  "id": "6144889d-6ebd-4b79-99a9-1e3ff307ed93",
+  "revision": 0,
+  "last_node_id": 7,
+  "last_link_id": 8,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "AnimeStylePost",
+      "pos": [
+        -35.52004699707034,
+        237.7201477050778
+      ],
+      "size": [
+        353.1236328125,
+        178
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AnimeStylePost"
+      },
+      "widgets_values": [
+        8,
+        1.25,
+        1.1,
+        0,
+        0.5,
+        0
+      ],
+      "widgets_values_named": {
+        "posterize_levels": 8,
+        "saturation": 1.25,
+        "contrast": 1.1,
+        "brightness": 0,
+        "lineart_strength": 0.5,
+        "glow": 0
+      }
+    },
+    {
+      "id": 3,
+      "type": "BatchCurate",
+      "pos": [
+        404.40355224609374,
+        220.19999999999996
+      ],
+      "size": [
+        304.526953125,
+        174
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "best_images",
+          "type": "IMAGE",
+          "links": [
+            4
+          ]
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BatchCurate"
+      },
+      "widgets_values": [
+        4,
+        1,
+        1,
+        1,
+        1
+      ],
+      "widgets_values_named": {
+        "top_n": 4,
+        "w_sharpness": 1,
+        "w_color": 1,
+        "w_exposure": 1,
+        "w_composition": 1
+      }
+    },
+    {
+      "id": 4,
+      "type": "SaveImage",
+      "pos": [
+        950.197241635698,
+        -205.28000000000006
+      ],
+      "size": [
+        270,
+        270
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.38.2",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "BatchCurate_best"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "BatchCurate_best"
+      }
+    },
+    {
+      "id": 5,
+      "type": "ShowText|pysssss",
+      "pos": [
+        819.7315753736142,
+        175.70614989067175
+      ],
+      "size": [
+        349,
+        316.4
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "文本",
+          "name": "text",
+          "type": "STRING",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "label": "字符串",
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "展示文本",
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "609f3afaa74b2f88ef9ce8d939626065e3247469",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "BatchCurate 审美评分（由高到低）：\n  rank 1: img#0  score=0.625\n  rank 2: img#2  score=0.593\n  rank 3: img#1  score=0.562\n  rank 4: img#4  score=0.550\n  rank 5: img#5  score=0.416\n  rank 6: img#3  score=0.333"
+      ],
+      "widgets_values_named": {
+        "text_0": "BatchCurate 审美评分（由高到低）：\n  rank 1: img#0  score=0.625\n  rank 2: img#2  score=0.593\n  rank 3: img#1  score=0.562\n  rank 4: img#4  score=0.550\n  rank 5: img#5  score=0.416\n  rank 6: img#3  score=0.333"
+      }
+    },
+    {
+      "id": 6,
+      "type": "ImageBatchtoImages",
+      "pos": [
+        325.0773640199609,
+        -159.1506014836559
+      ],
+      "size": [
+        270,
+        176
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_batch",
+          "type": "image_batch",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            7
+          ]
+        },
+        {
+          "name": "alpha",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageBatchtoImages"
+      },
+      "widgets_values": [
+        768,
+        1344,
+        "lanczos",
+        "crop (center)",
+        "#000000"
+      ],
+      "widgets_values_named": {
+        "width": 768,
+        "height": 1344,
+        "interpolation": "lanczos",
+        "mothed": "crop (center)",
+        "fill_color": "#000000"
+      }
+    },
+    {
+      "id": 7,
+      "type": "LoadImageBatch",
+      "pos": [
+        -35.74630469279495,
+        -188.6385565963273
+      ],
+      "size": [
+        270,
+        338
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "image_batch",
+          "type": "image_batch",
+          "links": [
+            8
+          ]
+        },
+        {
+          "name": "count",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImageBatch"
+      },
+      "widgets_values": [
+        false,
+        "e5cf7f91-efe8-4e55-9be2-2284512370ee",
+        ""
+      ],
+      "widgets_values_named": {
+        "append": false,
+        "batch": "e5cf7f91-efe8-4e55-9be2-2284512370ee",
+        "Choose files to upload": ""
+      }
+    }
+  ],
+  "links": [
+    [
+      3,
+      2,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      4,
+      3,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      3,
+      1,
+      5,
+      0,
+      "STRING"
+    ],
+    [
+      7,
+      6,
+      0,
+      2,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      7,
+      0,
+      6,
+      0,
+      "image_batch"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8264462809917354,
+      "offset": [
+        -120.12260268246797,
+        401.7831991852207
+      ]
+    },
+    "frontendVersion": "1.53.6",
+    "VHS_latentpreview": true,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "extensions": {
+    "widget_idx_map": {
+      "70": {
+        "seed": 0,
+        "sampler_name": 4,
+        "scheduler": 5
+      },
+      "90": {
+        "seed": 0
+      }
+    },
+    "seed_widgets": {
+      "70": 0,
+      "90": 0
+    }
+  },
+  "version": 0.4
+}
